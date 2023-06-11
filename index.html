@@ -159,34 +159,34 @@
     </div>
     <!-- 景区信息 -->
     <!-- ======= Featured Services Section ======= -->
+    
     <section id="featured-services" class="featured-services">
       <ul class="scenic-area-list">
         <li>
           <div class="scenic-area-card">
-            <h3>上海野生动物园</h3>
-            <p>上海市浦东新区宣桥镇南六公路178号</p>
-            <a href="tel:1234567890">电话：123-456-7890</a>
+            <h3 id="scene1name">上海野生动物园</h3>
             <br>
-            <button>查看详情</button>
+            <h5 id="scene1area">浦东新区</h5>
+            <p id="scene1loc">上海市浦东新区宣桥镇南六公路178号</p>
+            <p id="scene1phone">电话：123-456-7890</p>
           </div>
         </li>
         <li>
           <div class="scenic-area-card">
-            <h3>上海博物馆</h3>
-            <p>上海市黄浦区人民大道201号</p>
-            <a href="tel:1234567890">电话：123-456-7890</a>
+            <h3 id="scene2name">上海博物馆</h3>
             <br>
-            <button>查看详情</button>
+            <h5 id="scene2area">黄浦区</h5>
+            <p id="scene2loc">上海市黄浦区人民大道201号</p>
+            <p id="scene2phone">电话：123-456-7890</p>
           </div>
         </li>
         <li>
           <div class="scenic-area-card">
-            <h3>东方明珠广播电视塔</h3>
-            <p>上海市浦东新区世纪大道1号</p>
-            <a href="tel:1234567890">电话：123-456-7890</a>
+            <h3 id="scene3name">东方明珠广播电视塔</h3>
             <br>
-            <button>查看详情</button>
-            
+            <h5 id="scene3area">浦东新区</h5>
+            <p id="scene3loc">上海市浦东新区世纪大道1号</p>
+            <p id="scene3phone">电话：123-456-7890</p>
           </div>
         </li>
       </ul>
@@ -204,13 +204,13 @@
         <br>
         <div class="weather-container"  id="day1">
           <div class="location">
-            <h1>6月10日</h1>
+            <h1>6月12日</h1>
           </div>
           <div class="location">
-            <h1>北京市</h1>
+            <h1>上海市</h1>
           </div>
           <div class="temperature">
-            <h2>28℃</h2>
+            <h2>24℃</h2>
           </div>
           <div class="condition">
             <!-- <img src="https://cdn.pixabay.com/photo/2017/09/01/17/59/sun-2704154_960_720.png" alt="sunny"> -->
@@ -219,43 +219,43 @@
         </div>
         <div class="weather-container" id="day2">
           <div class="location">
-            <h1>6月10日</h1>
+            <h1>6月13日</h1>
           </div>
           <div class="location">
-            <h1>北京市</h1>
+            <h1>上海市</h1>
           </div>
           <div class="temperature">
-            <h2>28℃</h2>
+            <h2>26℃</h2>
           </div>
           <div class="condition">
             <!-- <img src="https://cdn.pixabay.com/photo/2017/09/01/17/59/sun-2704154_960_720.png" alt="sunny"> -->
-            <p>晴朗</p>
+            <p>小雨</p>
           </div>
         </div>
         <div class="weather-container" id="day3">
           <div class="location">
-            <h1>6月10日</h1>
+            <h1>6月14日</h1>
           </div>
           <div class="location">
-            <h1>北京市</h1>
+            <h1>上海市</h1>
           </div>
           <div class="temperature">
             <h2>28℃</h2>
           </div>
           <div class="condition">
             <!-- <img src="https://cdn.pixabay.com/photo/2017/09/01/17/59/sun-2704154_960_720.png" alt="sunny"> -->
-            <p>晴朗</p>
+            <p>多云</p>
           </div>
         </div>
         <div class="weather-container" id="day4">
           <div class="location">
-            <h1>6月10日</h1>
+            <h1>6月15日</h1>
           </div>
           <div class="location">
-            <h1>北京市</h1>
+            <h1>上海市</h1>
           </div>
           <div class="temperature">
-            <h2>28℃</h2>
+            <h2>27℃</h2>
           </div>
           <div class="condition">
             <!-- <img src="https://cdn.pixabay.com/photo/2017/09/01/17/59/sun-2704154_960_720.png" alt="sunny"> -->
@@ -264,13 +264,13 @@
         </div>
         <div class="weather-container" id="day5">
           <div class="location">
-            <h1>6月10日</h1>
+            <h1>6月16日</h1>
           </div>
           <div class="location">
-            <h1>北京市</h1>
+            <h1>上海市</h1>
           </div>
           <div class="temperature">
-            <h2>28℃</h2>
+            <h2>32℃</h2>
           </div>
           <div class="condition">
             <!-- <img src="https://cdn.pixabay.com/photo/2017/09/01/17/59/sun-2704154_960_720.png" alt="sunny"> -->
@@ -381,12 +381,67 @@
 var latitude;
 var longitude;
 var city;
-function getWeather(response) {
+function getScenery(response) {
     console.log(response);
+    // 获取要替换的元素
+    name1E = document.getElementById('scene1name');
+    area1E = document.getElementById('scene1area');
+    loc1E = document.getElementById('scene1loc');
+    phone1E = document.getElementById('scene1phone');
+
+    name1 = response.results[0].name;
+    area1 = response.results[0].area;
+    loc1 = response.results[0].address;
+    phone1 = response.results[0].telephone;
+
+    // 更新元素的文本内容
+    name1E.innerText = name1;
+    area1E.innerText = area1;
+    loc1E.innerText = loc1;
+    phone1E.innerText = "电话 ：" + phone1;
+
+    name2E = document.getElementById('scene2name');
+    area2E = document.getElementById('scene2area');
+    loc2E = document.getElementById('scene2loc');
+    phone2E = document.getElementById('scene2phone');
+
+    name2 = response.results[1].name;
+    area2 = response.results[1].area;
+    loc2 = response.results[1].address;
+    phone2 = response.results[1].telephone;
+
+    // 更新元素的文本内容
+    name2E.innerText = name2;
+    area2E.innerText = area2;
+    loc2E.innerText = loc2;
+    phone2E.innerText = "电话 ：" + phone2;
+
+    name3E = document.getElementById('scene3name');
+    area3E = document.getElementById('scene3area');
+    loc3E = document.getElementById('scene3loc');
+    phone3E = document.getElementById('scene3phone');
+
+    name3 = response.results[2].name;
+    area3 = response.results[2].area;
+    loc3 = response.results[2].address;
+    phone3 = response.results[2].telephone;
+
+    // 更新元素的文本内容
+    name3E.innerText = name3;
+    area3E.innerText = area3;
+    loc3E.innerText = loc3;
+    phone3E.innerText = "电话 ：" + phone3;
+
 }
 function decodeAddress(response) {
     city = response.result.addressComponent.city;
     city = city.replace(/市/g, "");
+    console.log(city);
+    url = "https://api.map.baidu.com/place/v2/search?query=景点&tag=景点&region="+city+"&output=json&ak=B0n1xpqHOG8aowwEx2BH67qtxqLGiMAy";
+    // 创建一个动态生成的 script 标签
+    var script = document.createElement('script');
+    script.src = url + '&callback=getScenery'; // 将回调函数名传递给 API
+    document.body.appendChild(script);
 }
 
 function handleResponse(response) {
@@ -422,7 +477,7 @@ searchBtn.addEventListener("click", function(event) {
     event.preventDefault(); // 阻止表单提交的默认行为
 
     var address = searchInput.value; // 获取输入框的值
-    console.log(address); // 在控制台输出搜索的内容
+    //console.log(address); // 在控制台输出搜索的内容
     var apiKey = "B0n1xpqHOG8aowwEx2BH67qtxqLGiMAy"; // 替换为您的百度地图API密钥
     var url = "https://api.map.baidu.com/geocoding/v3/?address="+address+"&output=json&ak=B0n1xpqHOG8aowwEx2BH67qtxqLGiMAy"
 

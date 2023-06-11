@@ -2023,7 +2023,7 @@ section {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
   border-radius: 5px;
-  height: 400px;
+  height: 240px;
   width: calc((92% - 30px)); /* 每行显示三张卡片，减去 margin 的值 */
   overflow: hidden;
 }
